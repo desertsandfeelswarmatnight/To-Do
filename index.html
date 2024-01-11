@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+    <style>
+        @font-face {
+            font-family: 'MaruBuri-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        html {
+            font-family: 'MaruBuri-Regular';
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>To Do List</h1></header>
+    <main>
+        <label for="what">오늘 할 일 : </label>
+        <input type="text" id="what" onkeydown="javascript:if(event.keyCode == 13) CreateElements()">
+        <button id="Submit">Submit</button>
+        <div id="list"></div>
+    </main>
+    <script>
+        document.getElementById('what').value = ''
+        function CreateElements() {
+            const temp = document.createElement('div')
+            temp.setAttribute('style','text-align: center; margin-top: 20px;')
+            temp.setAttribute('id','todo')
+            temp.innerText = document.getElementById('what').value
+            document.getElementById('list').appendChild(temp)
+            document.getElementById('what').value = ''
+        }
+
+        document.getElementById('Submit').addEventListener('click', CreateElements())
+    </script>
+</body>
+</html>
